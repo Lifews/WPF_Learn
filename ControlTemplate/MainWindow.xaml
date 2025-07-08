@@ -78,7 +78,6 @@
             </Setter>
         </Style>
     </Window.Resources>
-
     <Grid>
         <Button
             Width="200"
@@ -92,7 +91,6 @@
             </StackPanel>
         </Button>
     </Grid>
-
 </Window>
 
 <!--  控件模板和模板绑定  -->
