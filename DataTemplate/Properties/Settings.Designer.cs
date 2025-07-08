@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WPF_Learn.Properties
+namespace DataTemplate.Properties
 {
 
 
