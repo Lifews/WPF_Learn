@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlTemplate", "ControlT
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataTemplate", "DataTemplate\DataTemplate.csproj", "{418FE862-1154-44FA-BD2C-A0A4D3C689EF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVVM", "MVVM\MVVM.csproj", "{2DDDEF11-73ED-4E1F-9FD6-2C7F234981BD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{418FE862-1154-44FA-BD2C-A0A4D3C689EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{418FE862-1154-44FA-BD2C-A0A4D3C689EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{418FE862-1154-44FA-BD2C-A0A4D3C689EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DDDEF11-73ED-4E1F-9FD6-2C7F234981BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DDDEF11-73ED-4E1F-9FD6-2C7F234981BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DDDEF11-73ED-4E1F-9FD6-2C7F234981BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DDDEF11-73ED-4E1F-9FD6-2C7F234981BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
