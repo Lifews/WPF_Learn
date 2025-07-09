@@ -1,0 +1,43 @@
+﻿
+<!--
+    Community Toolkit MVVM（即MVVM Toolkit）支持多种.NET平台，包括.NET Framework（4.6.1及以上版本）、.NET Core 3.1、.NET 5、6、7以及更高版本，也支持.NET Standard 2.0。
+    但是，在.NET Framework中使用时，需要注意以下几点：
+    1. **项目目标框架**：确保项目目标框架至少为.NET Framework 4.6.1或更高版本。如果低于此版本，则无法使用。
+    2. **源生成器要求**：MVVM Toolkit中的源生成器（如`[ObservableProperty]`、`[RelayCommand]`）需要编译器支持（C# 9.0或更高版本）。
+    而.NET Framework项目默认使用较旧的C#版本（通常为C# 7.3）。因此，需要手动配置项目以使用较新的C#语言版本。
+    此处使用.NET 8.0版本
+-->
+
+
+
+<Window
+    x:Class="Toolkit_.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Toolkit_"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="MainWindow"
+    Width="800"
+    Height="450"
+    mc:Ignorable="d">
+    <Window.DataContext>
+        <local:MainWindowViewModel />
+    </Window.DataContext>
+    <Grid TextElement.FontSize="32">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBox Width="300" Text="{Binding Title}" />
+            <TextBox Width="300" Text="{Binding Caption, Mode=OneWay}" />
+            <CheckBox
+                Margin="0,5,0,0"
+                HorizontalContentAlignment="Center"
+                Content="Is Enable"
+                IsChecked="{Binding IsEnable}" />
+            <Button Command="{Binding ButtonClickCommand}" Content="click me" />
+            <CheckBox
+                HorizontalContentAlignment="Center"
+                Content="Is Running"
+                IsChecked="{Binding ButtonClickCommand.IsRunning, Mode=OneWay}" />
+        </StackPanel>
+    </Grid>
+</Window>
