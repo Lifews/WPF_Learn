@@ -1,11 +1,9 @@
 ﻿
 <!--
-    Community Toolkit MVVM（即MVVM Toolkit）支持多种.NET平台，包括.NET Framework（4.6.1及以上版本）、.NET Core 3.1、.NET 5、6、7以及更高版本，也支持.NET Standard 2.0。
-    但是，在.NET Framework中使用时，需要注意以下几点：
-    1. **项目目标框架**：确保项目目标框架至少为.NET Framework 4.6.1或更高版本。如果低于此版本，则无法使用。
-    2. **源生成器要求**：MVVM Toolkit中的源生成器（如`[ObservableProperty]`、`[RelayCommand]`）需要编译器支持（C# 9.0或更高版本）。
-    而.NET Framework项目默认使用较旧的C#版本（通常为C# 7.3）。因此，需要手动配置项目以使用较新的C#语言版本。
-    此处使用.NET 8.0版本
+    Community Toolkit MVVM（即MVVM Toolkit）不支持.NET Framework
+    如果要在.NET Framework中使用MVVM Toolkit，请使用.NET 6或更高版本。
+    或者有另一种办法，直接新建.NET6+的WPF项目，然后修改csproj文件，将TargetFramework改成net462，再加个LangVersion，最后重新编译一下就可以了。
+    再或者新建standard项目，添加CommunityToolkit.Mvvm包，然后在.NET Framework项目中引用这个standard项目。
 -->
 
 
