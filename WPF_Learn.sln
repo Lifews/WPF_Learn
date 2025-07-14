@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resourece_base", "Resourece
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Toolkit_", "Toolkit_\Toolkit_.csproj", "{8BA9D42B-1ADC-4ED5-8337-4D94A0AA904F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Toolkit_Messenger", "Toolkit_Messenger\Toolkit_Messenger.csproj", "{BF4A5181-9E9F-4F45-816B-7228802B625A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventAggregator", "EventAggregator\EventAggregator.csproj", "{BF4A5181-9E9F-4F45-816B-7228802B625A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
