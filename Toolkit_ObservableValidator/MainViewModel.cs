@@ -8,26 +8,27 @@ namespace Toolkit_ObservableValidator;
 
 public partial class MainViewModel : ObservableValidator
 {
-
-
-#if false
-    这里利用.resx做界面本地化，多看几遍，留意一些规则
-#endif 
-
-
+    // 这里利用.resx做界面本地化，多看几遍，留意一些规则
     [ObservableProperty]
     [Required(ErrorMessageResourceName = "UserName_Required", ErrorMessageResourceType = typeof(Language))]
     [MinLength(6, ErrorMessageResourceName = "UserName_MinLength", ErrorMessageResourceType = typeof(Language))]
     [MaxLength(20, ErrorMessage = "用户名长度不能大于20位")]
     string? userName;
 
-
     [ObservableProperty]
     [Required(ErrorMessage = "邮件不能为空")]
     [EmailAddress]
     string? email;
 
-
+    [ObservableProperty]
+    [Required(ErrorMessage = "年龄不能为空")]
+    [Range(18, 150)]
+    int? age;
+    partial void OnAgeChanged(int? value)
+    {
+        //前端校验
+        ValidateProperty(value, nameof(Age));
+    }
 
 #if false
     int? age;
@@ -50,18 +51,6 @@ public partial class MainViewModel : ObservableValidator
     }
 #endif
 
-
-
-    [ObservableProperty]
-    [Required(ErrorMessage = "年龄不能为空")]
-    [Range(18, 150)]
-    int? age;
-    partial void OnAgeChanged(int? value)
-    {
-        //前端校验
-        ValidateProperty(value, nameof(Age));
-    }
-
     [ObservableProperty]
     string? errorMessage;
 
@@ -72,14 +61,12 @@ public partial class MainViewModel : ObservableValidator
         if (HasErrors)
         {
             ErrorMessage = string.Join(Environment.NewLine, GetErrors());
-
             MessageBox.Show(                    // 1. 弹出消息框
                 string.Join(                    // 2. 将字符串数组拼接成单个字符串
                 Environment.NewLine,            // 3. 使用系统换行符作为分隔符
                 GetErrors()                     // 4. 获取错误信息集合
                 )
             );
-
             return;
         }
         ErrorMessage = "";
