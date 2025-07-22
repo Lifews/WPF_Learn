@@ -15,6 +15,15 @@
         <local:MainViewModel />
     </Window.DataContext>
 
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/SkinDefault.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Theme.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
     <Border
         Padding="20"
         HorizontalAlignment="Center"
@@ -22,10 +31,8 @@
         BorderBrush="Gray"
         BorderThickness="1"
         CornerRadius="10">
-        <StackPanel Width="200">
+        <StackPanel>
             <ComboBox
-                Width="200"
-                Height="30"
                 Margin="10"
                 DisplayMemberPath="Value"
                 ItemsSource="{Binding Roles}"
@@ -39,4 +46,5 @@
             <TextBox IsReadOnly="True" Text="{Binding SelectedRole, Mode=OneWay}" />
         </StackPanel>
     </Border>
+
 </Window>
