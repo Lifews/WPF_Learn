@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
-namespace MVVM
+namespace MVVM_INotifyPropertyChanged
 {
     #region 命令绑定,正常框架不会把自定义类写在vm中，这里只是learning，为了方便
     public class MyCommand : ICommand

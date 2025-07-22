@@ -7,11 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlTemplate", "ControlT
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataTemplate", "DataTemplate\DataTemplate.csproj", "{418FE862-1154-44FA-BD2C-A0A4D3C689EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVVM", "MVVM\MVVM.csproj", "{2DDDEF11-73ED-4E1F-9FD6-2C7F234981BD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVVM_INotifyPropertyChanged", "MVVM_INotifyPropertyChanged\MVVM_INotifyPropertyChanged.csproj", "{2DDDEF11-73ED-4E1F-9FD6-2C7F234981BD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resourece_base", "Resourece_base\Resourece_base.csproj", "{C6FF1A8B-088E-4974-9C85-A3DF298525E3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Toolkit_", "Toolkit_\Toolkit_.csproj", "{8BA9D42B-1ADC-4ED5-8337-4D94A0AA904F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Toolkit_SourceGenerators", "Toolkit_SourceGenerators\Toolkit_SourceGenerators.csproj", "{8BA9D42B-1ADC-4ED5-8337-4D94A0AA904F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventAggregator", "EventAggregator\EventAggregator.csproj", "{BF4A5181-9E9F-4F45-816B-7228802B625A}"
 EndProject
@@ -21,7 +21,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Toolkit_Message_app", "Tool
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Toolkit_ObservableValidator", "Toolkit_ObservableValidator\Toolkit_ObservableValidator.csproj", "{FA510E53-2E1F-49EB-AEBE-9445CFF4CB27}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComboBox_binding", "ComboBox_binding\ComboBox_binding.csproj", "{635D99AB-73CB-4F9C-81D7-F1ADC17679E7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComboBox_BindToEnum", "ComboBox_BindToEnum\ComboBox_BindToEnum.csproj", "{635D99AB-73CB-4F9C-81D7-F1ADC17679E7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Toolkit", "Toolkit", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -72,6 +74,13 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8BA9D42B-1ADC-4ED5-8337-4D94A0AA904F} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{BF4A5181-9E9F-4F45-816B-7228802B625A} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{725D8440-5988-46C5-9E17-624E6C638A37} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{88CDF812-5AA7-42C5-89F2-50220516BC96} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{FA510E53-2E1F-49EB-AEBE-9445CFF4CB27} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A256E571-7C9D-4E11-A606-B79B4BBDC04A}
