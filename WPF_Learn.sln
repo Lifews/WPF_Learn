@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComboBox_BindToEnum", "Comb
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Toolkit", "Toolkit", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Serial_Learn", "Serial_Learn\Serial_Learn.csproj", "{C8CF3433-7FA6-4FAC-A73E-21739C6A88E0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -71,6 +73,10 @@ Global
 		{635D99AB-73CB-4F9C-81D7-F1ADC17679E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{635D99AB-73CB-4F9C-81D7-F1ADC17679E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{635D99AB-73CB-4F9C-81D7-F1ADC17679E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8CF3433-7FA6-4FAC-A73E-21739C6A88E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8CF3433-7FA6-4FAC-A73E-21739C6A88E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8CF3433-7FA6-4FAC-A73E-21739C6A88E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8CF3433-7FA6-4FAC-A73E-21739C6A88E0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
