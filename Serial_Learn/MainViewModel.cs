@@ -1,9 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using System;
 using System.Collections.ObjectModel;
-using System.Drawing;
 using System.IO.Ports;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Windows;
 using System.Windows.Documents;
@@ -48,6 +47,48 @@ namespace Serial_Learn;
 
 public partial class MainViewModel : ObservableObject, IDisposable
 {
+    #region 常量
+
+    /// <summary>
+    /// 包头
+    /// </summary>
+    private const byte head = 0xfa;
+
+    /// <summary>
+    /// 包尾
+    /// </summary>
+    private const byte end = 0xfe;
+
+    /// <summary>
+    /// 包长
+    /// </summary>
+    private const int packgeLen = 4;
+
+    /// <summary>
+    /// 设备标识与状态地址
+    /// </summary>
+    private const byte deviceInfoAdress = 0x10;
+
+    /// <summary>
+    /// 单轴通讯地址
+    /// </summary>
+    private byte[] channelAdress = { 0x20, 0x30, 0x40, 0x50, 0x60, 0x70 };
+
+    //功能码
+    private const byte lightNum = 0x1;
+    private const byte redRead = 0x1;
+    private const byte redWrite = 0x2;
+    private const byte greenRead = 0x3;
+    private const byte greenWrite = 0x4;
+    private const byte blueRead = 0x5;
+    private const byte blueWrite = 0x6;
+    private const byte switchRead = 0x7;
+    private const byte switchWrite = 0x8;
+    private const byte switchOn = 0xFF;
+    private const byte switchOff = 0x00;
+
+    #endregion
+
     #region 字段
 
     private SerialPort serialPort = new();
@@ -76,13 +117,33 @@ public partial class MainViewModel : ObservableObject, IDisposable
 
     [ObservableProperty] private Parity _parity;
 
+    [ObservableProperty] private LightNo _lightNo;
+
+    [ObservableProperty] private int _colorR;
+
+    [ObservableProperty] private int _colorG;
+
+    [ObservableProperty] private int _colorB;
+
     #endregion
 
-    #region 构造函数
+    #region 构造、释放
     public MainViewModel()
     {
         SerialInitialize();
         _uiDispatcher = Dispatcher.CurrentDispatcher;
+    }
+
+    /// <summary>
+    /// 释放资源
+    /// </summary>
+    public void Dispose()
+    {
+        if (serialPort != null && serialPort.IsOpen)
+        {
+            serialPort.Close();
+            serialPort.Dispose();
+        }
     }
 
     /// <summary>
@@ -113,18 +174,100 @@ public partial class MainViewModel : ObservableObject, IDisposable
     }
     #endregion
 
-
-    /// <summary>
-    /// 释放资源
-    /// </summary>
-    public void Dispose()
+    #region 颜色更新
+    partial void OnColorRChanged(int value)
     {
-        if (serialPort != null && serialPort.IsOpen)
-        {
-            serialPort.Close();
-            serialPort.Dispose();
-        }
+        if (!serialPort.IsOpen)
+            return;
+
+        int codeFunctionRed = channelAdress[(int)LightNo] + redWrite;
+
+        byte[] sender = new byte[4];
+        sender[0] = head;
+        sender[1] = (byte)codeFunctionRed;
+        sender[2] = (byte)ColorR;
+        sender[3] = end;
+
+        //发送数据
+        serialPort.Write(sender, 0, sender.Length);
     }
+    partial void OnColorGChanged(int value)
+    {
+        if (!serialPort.IsOpen)
+            return;
+
+        int codeFunctionGreen = channelAdress[(int)LightNo] + greenWrite;
+
+        byte[] sender = new byte[4];
+        sender[0] = head;
+        sender[1] = (byte)codeFunctionGreen;
+        sender[2] = (byte)ColorG;
+        sender[3] = end;
+
+        //发送数据
+        serialPort.Write(sender, 0, sender.Length);
+    }
+    partial void OnColorBChanged(int value)
+    {
+        if (!serialPort.IsOpen)
+            return;
+
+        int codeFunctionBlue = channelAdress[(int)LightNo] + blueWrite;
+
+        byte[] sender = new byte[4];
+        sender[0] = head;
+        sender[1] = (byte)codeFunctionBlue;
+        sender[2] = (byte)ColorB;
+        sender[3] = end;
+
+        //发送数据
+        serialPort.Write(sender, 0, sender.Length);
+    }
+    #endregion
+
+    #region 开关光源
+    [RelayCommand]
+    public void OpenLight()
+    {
+        if (!serialPort.IsOpen)
+            return;
+
+        int codeFunction = channelAdress[(int)LightNo] + switchWrite;
+
+        byte[] sender = new byte[4];
+        sender[0] = head;
+        sender[1] = (byte)codeFunction;
+        sender[2] = switchOn;
+        sender[3] = end;
+
+        //发送数据
+        serialPort.Write(sender, 0, sender.Length);
+    }
+    [RelayCommand]
+    public void CloseLight()
+    {
+        if (!serialPort.IsOpen)
+            return;
+
+        int codeFunction = channelAdress[(int)LightNo] + switchWrite;
+
+        byte[] sender = new byte[4];
+        sender[0] = head;
+        sender[1] = (byte)codeFunction;
+        sender[2] = switchOff;
+        sender[3] = end;
+
+        //发送数据
+        serialPort.Write(sender, 0, sender.Length);
+    }
+    #endregion
+
+
+
+
+
+
+
 
 
     /// <summary>
@@ -208,8 +351,6 @@ public partial class MainViewModel : ObservableObject, IDisposable
             }
         }
     }
-
-
     /// <summary>
     /// 发送数据
     /// </summary>
@@ -228,8 +369,10 @@ public partial class MainViewModel : ObservableObject, IDisposable
             MessageBox.Show("请先连接串口");
         }
     }
-
-
+    /// <summary>
+    /// 接收函数
+    /// </summary>
+    /// <returns></returns>
     private async Task ReceiveAsync()
     {
         byte[] buffer = new byte[4096];

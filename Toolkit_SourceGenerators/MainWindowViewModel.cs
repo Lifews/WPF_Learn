@@ -5,7 +5,7 @@ namespace Toolkit_SourceGenerators;
 
 public partial class MainWindowViewModel : ObservableObject
 {
-    #region 属性
+
     [ObservableProperty]
     [NotifyCanExecuteChangedFor(nameof(ButtonClickCommand))]
     private bool _isEnable = false;
@@ -16,7 +16,7 @@ public partial class MainWindowViewModel : ObservableObject
 
     private bool CanButtonClick => IsEnable;
     public string Caption => $"Title:{Title}";
-    #endregion
+
 
     [RelayCommand(CanExecute = nameof(CanButtonClick))]
     private async Task ButtonClick()
