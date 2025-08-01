@@ -2,9 +2,11 @@
 using System.Data;
 
 
+
 Delect();
 Insert();
 Select();
+LoginVerification();
 
 
 
@@ -63,6 +65,29 @@ static void Insert()
 
 #endif
 
+void LoginVerification()
+{
+    while (true)
+    {
+        Console.WriteLine("请输入用户名");
+        string? inputName = Console.ReadLine();
+        Console.WriteLine("请输入密码");
+        string? password = Console.ReadLine();
+
+        string sql = $"select * from PasswordTable where username='{inputName}' and password='{password}'";
+        DataTable dt = SelectData(sql);
+
+        if (dt.Rows.Count <= 0)
+        {
+            Console.WriteLine("用户名和密码不正确！");
+            continue;
+        }
+        break;
+    }
+    Console.WriteLine("欢迎访问本系统");
+}
+
+
 void Select()
 {
     string sql = "select * from PasswordTable";
@@ -112,7 +137,6 @@ void Delect()
 }
 
 
-
 static int EditData(string sql)
 {
     //连接数据库 此处使用本地连接
@@ -130,7 +154,7 @@ static int EditData(string sql)
         count = sqlCommand.ExecuteNonQuery();
         Console.WriteLine($"受影响的行数为{count}行");
     }
-    catch(Exception ex)
+    catch (Exception ex)
     {
         Console.WriteLine(ex.ToString());
     }
@@ -153,7 +177,7 @@ static DataTable SelectData(string sql)
 
     SqlDataAdapter adapter = new SqlDataAdapter();
     adapter.SelectCommand = sqlCommand;
-    
+
     DataSet ds = new DataSet();
     adapter.Fill(ds);
 
