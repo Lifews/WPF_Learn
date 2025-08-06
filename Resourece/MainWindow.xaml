@@ -1,0 +1,36 @@
+﻿<Window
+    x:Class="Resourece_.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Resourece_"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="MainWindow"
+    Width="800"
+    Height="450"
+    mc:Ignorable="d">
+    <Grid>
+        <StackPanel>
+            <Button
+                Width="40"
+                Height="30"
+                Margin="5"
+                Click="Button_Click"
+                Content="update" />
+            <Button
+                Width="40"
+                Height="30"
+                Margin="5"
+                BorderBrush="{StaticResource SolidColor}"
+                Content="btn1" />
+            <Button
+                Width="40"
+                Height="30"
+                Margin="5"
+                BorderBrush="{DynamicResource SolidColor}"
+                Content="btn2" />
+        </StackPanel>
+    </Grid>
+</Window>
+
+<!--  随便看看  -->

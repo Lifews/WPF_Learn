@@ -1,0 +1,41 @@
+﻿
+<!--
+    Community Toolkit MVVM（即MVVM Toolkit）不支持.NET Framework
+    如果要在.NET Framework中使用MVVM Toolkit，请使用.NET 6或更高版本。
+    或者有另一种办法，直接新建.NET6+的WPF项目，然后修改csproj文件，将TargetFramework改成net462，再加个LangVersion，最后重新编译一下就可以了。
+    再或者新建standard项目，添加CommunityToolkit.Mvvm包，然后在.NET Framework项目中引用这个standard项目。
+-->
+
+
+
+<Window
+    x:Class="Toolkit_SourceGenerators.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Toolkit_SourceGenerators"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="MainWindow"
+    Width="800"
+    Height="450"
+    mc:Ignorable="d">
+    <Window.DataContext>
+        <local:MainWindowViewModel />
+    </Window.DataContext>
+    <Grid TextElement.FontSize="32">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBox Width="300" Text="{Binding Title}" />
+            <TextBox Width="300" Text="{Binding Caption, Mode=OneWay}" />
+            <CheckBox
+                Margin="0,5,0,0"
+                HorizontalContentAlignment="Center"
+                Content="Is Enable"
+                IsChecked="{Binding IsEnable}" />
+            <Button Command="{Binding ButtonClickCommand}" Content="click me" />
+            <CheckBox
+                HorizontalContentAlignment="Center"
+                Content="Is Running"
+                IsChecked="{Binding ButtonClickCommand.IsRunning, Mode=OneWay}" />
+        </StackPanel>
+    </Grid>
+</Window>
